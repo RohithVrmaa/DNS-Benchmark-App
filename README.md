@@ -4,24 +4,25 @@
 > Developed and authored by **Rohith Varma**
 
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![Platform](https://img.shields.io/badge/Platform-Windows%2010%20%2F%2011%20(Portable)-0078D6.svg?logo=windows)](https://microsoft.com)
+[![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Android-0078D6.svg?logo=windows)](https://github.com/RohithVrmaa/DNS-Benchmark-App)
 [![Release](https://img.shields.io/badge/Release-v1.0%20Stable-10b981.svg)](https://github.com/RohithVrmaa/DNS-Benchmark-App/releases/tag/v1.0)
-[![Build](https://img.shields.io/badge/Build-Native%20Win32%20Static-purple.svg)](https://github.com/RohithVrmaa/DNS-Benchmark-App)
+[![Build](https://img.shields.io/badge/Build-Native%20Win32%20%2B%20Android%20APK-purple.svg)](https://github.com/RohithVrmaa/DNS-Benchmark-App)
 
-DNS SpeedBench is a high-performance, standalone Windows desktop application designed to benchmark public and private DNS resolvers with sub-millisecond precision timing, real-time jitter calculations, DNSSEC validation, and domain-level peering congestion diagnostics.
+DNS SpeedBench is a high-performance cross-platform DNS benchmarking utility designed to benchmark public and private DNS resolvers with sub-millisecond precision timing, real-time jitter calculations, DNSSEC validation, and domain-level peering congestion diagnostics.
 
 ---
 
-## 🚀 Downloads (Portable Zero-Install Windows Executables)
+## 🚀 Downloads (Portable Windows Executables & Android APK)
 
-No setup wizard, no installation, and no administrative registry modifications required. Download and launch directly:
+No setup wizard, no installer, and no administrative registry modifications required. Download and launch directly:
 
-| Portable Binary | Architecture | Target Platform | File Size | Description |
-| :--- | :--- | :--- | :--- | :--- |
-| **[`DNS-SpeedBench-v1.0-win-x64-portable.exe`](https://github.com/RohithVrmaa/DNS-Benchmark-App/releases/download/v1.0/DNS-SpeedBench-v1.0-win-x64-portable.exe)** | **64-bit (x64)** | Windows 11 & Windows 10 (64-bit) | **~1.5 MB** | 100% standalone native Windows app (Single native title bar, statically linked runtime, zero external DLL dependencies) *(Recommended)* |
-| **[`DNS-SpeedBench-v1.0-win-x86-portable.exe`](https://github.com/RohithVrmaa/DNS-Benchmark-App/releases/download/v1.0/DNS-SpeedBench-v1.0-win-x86-portable.exe)** | **32-bit (x86)** | Windows 7 / 8 / 10 (32-bit) & Embedded | **~1.6 MB** | 100% standalone native 32-bit Windows app (Single native title bar, statically linked runtime, zero external DLL dependencies) |
+| Download Package | Target Platform / Architecture | File Size | Description |
+| :--- | :--- | :--- | :--- |
+| **[`DNS-SpeedBench-v1.0-win-x64-portable.exe`](https://github.com/RohithVrmaa/DNS-Benchmark-App/releases/download/v1.0/DNS-SpeedBench-v1.0-win-x64-portable.exe)** | **Windows 64-bit (x64)** | **~1.5 MB** | 100% standalone native Windows app (Single native title bar, statically linked runtime, zero external DLL dependencies) *(Recommended)* |
+| **[`DNS-SpeedBench-v1.0-win-x86-portable.exe`](https://github.com/RohithVrmaa/DNS-Benchmark-App/releases/download/v1.0/DNS-SpeedBench-v1.0-win-x86-portable.exe)** | **Windows 32-bit (x86)** | **~1.6 MB** | 100% standalone native 32-bit Windows app (Single native title bar, statically linked runtime, zero external DLL dependencies) |
+| **[`DNS-SpeedBench-v1.0-android.apk`](https://github.com/RohithVrmaa/DNS-Benchmark-App/releases/download/v1.0/DNS-SpeedBench-v1.0-android.apk)** | **Android (5.0+ to Android 15)** | **~136 KB** | Standalone Android APK (Universal, hardware-accelerated, zero telemetry, full offline engine) |
 
-> **Verification**: SHA256 checksums are published in the [GitHub v1.0 Release](https://github.com/RohithVrmaa/DNS-Benchmark-App/releases/tag/v1.0).
+> **Verification**: Cryptographic SHA-256 checksums are published in [`SHA256SUMS.txt`](https://github.com/RohithVrmaa/DNS-Benchmark-App/releases/download/v1.0/SHA256SUMS.txt) on the [GitHub v1.0 Release](https://github.com/RohithVrmaa/DNS-Benchmark-App/releases/tag/v1.0).
 
 ---
 
