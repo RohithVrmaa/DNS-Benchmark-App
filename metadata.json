@@ -1,0 +1,6 @@
+{
+  "name": "DNS SpeedBench - Portable Windows DNS Benchmark",
+  "description": "Modern Windows portable DNS benchmarking utility to test response latencies, reliability, and DNSSEC across major resolvers with one-click adapter configuration.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
