@@ -159,14 +159,36 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
         // Create native Windows application window (real HWND, own class, own taskbar icon)
         webview::webview w(false, nullptr);
         w.set_title("DNS SpeedBench v1.0");
-        w.set_size(1260, 840, WEBVIEW_HINT_NONE);
+        w.set_size(1280, 840, WEBVIEW_HINT_NONE);
 
-        // Native app polish: disable browser context menu so it behaves like a true desktop app
-        w.init("window.addEventListener('contextmenu', function(e) { e.preventDefault(); });");
+        // Native app polish: set desktop flag, disable context menu, hotkeys, zoom, and drag/drop
+        w.init(
+            "window.__IS_NATIVE_DESKTOP__ = true;\n"
+            "window.addEventListener('contextmenu', function(e) { e.preventDefault(); });\n"
+            "window.addEventListener('keydown', function(e) {\n"
+            "  if (e.key === 'F5' || (e.ctrlKey && ['r','R','p','P','u','U','s','S','f','F','+','-','=','0'].indexOf(e.key) !== -1)) {\n"
+            "    e.preventDefault();\n"
+            "  }\n"
+            "});\n"
+            "window.addEventListener('wheel', function(e) { if (e.ctrlKey) e.preventDefault(); }, { passive: false });\n"
+            "window.addEventListener('dragover', function(e) { e.preventDefault(); });\n"
+            "window.addEventListener('drop', function(e) { e.preventDefault(); });\n"
+        );
 
-        // Navigate to local embedded web application
+        // Set native window icon from embedded resource 101
+        auto winRes = w.window();
+        if (winRes.has_value()) {
+            HWND hwnd = (HWND)winRes.value();
+            HICON hIcon = LoadIcon(hInstance, MAKEINTRESOURCE(101));
+            if (hIcon) {
+                SendMessage(hwnd, WM_SETICON, ICON_BIG, (LPARAM)hIcon);
+                SendMessage(hwnd, WM_SETICON, ICON_SMALL, (LPARAM)hIcon);
+            }
+        }
+
+        // Navigate to local embedded web application in native desktop mode
         char url[128];
-        snprintf(url, sizeof(url), "http://127.0.0.1:%u/", g_serverPort);
+        snprintf(url, sizeof(url), "http://127.0.0.1:%u/?native=1", g_serverPort);
         w.navigate(url);
 
         // Run native Windows message loop

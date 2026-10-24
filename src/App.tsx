@@ -154,6 +154,39 @@ export default function App() {
     } catch (e) {}
   }, [history]);
 
+  // Suppress browser hotkeys (F5 refresh, Ctrl+R, Ctrl+P print, Ctrl+S save, Ctrl+U source, zoom, drag/drop)
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (
+        e.key === 'F5' ||
+        (e.ctrlKey && ['r', 'R', 'p', 'P', 'u', 'U', 's', 'S', 'f', 'F', '+', '-', '=', '0'].includes(e.key))
+      ) {
+        e.preventDefault();
+      }
+    };
+
+    const handleWheel = (e: WheelEvent) => {
+      if (e.ctrlKey) {
+        e.preventDefault();
+      }
+    };
+
+    const handleDragOver = (e: DragEvent) => e.preventDefault();
+    const handleDrop = (e: DragEvent) => e.preventDefault();
+
+    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('wheel', handleWheel, { passive: false });
+    window.addEventListener('dragover', handleDragOver);
+    window.addEventListener('drop', handleDrop);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('wheel', handleWheel);
+      window.removeEventListener('dragover', handleDragOver);
+      window.removeEventListener('drop', handleDrop);
+    };
+  }, []);
+
   const [domains, setDomains] = useState<DomainTestTarget[]>(DEFAULT_DOMAINS);
 
   // Baseline results pre-seeded for realistic immediate UI feedback
@@ -457,183 +490,153 @@ export default function App() {
     .sort((a, b) => a.avgLatencyMs - b.avgLatencyMs)[0];
 
   return (
-    <div className={darkMode ? 'dark' : ''}>
-      <div className="min-h-screen bg-slate-950 text-neutral-900 dark:text-neutral-100 flex flex-col justify-between selection:bg-blue-500 selection:text-white">
-        {/* Desktop Wallpaper Environment (Windows 11 Mica Backdrop) */}
-        <div
-          className={`flex-1 flex flex-col items-center justify-center transition-all duration-300 ${
-            isFullscreenWindow
-              ? 'p-0'
-              : 'p-2 sm:p-5 md:p-7 bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950/80 relative'
-          }`}
-        >
-          {/* Subtle Desktop Lighting Backdrop */}
-          {!isFullscreenWindow && (
-            <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-30">
-              <div className="absolute -top-40 -left-40 w-96 h-96 bg-blue-600/30 rounded-full blur-3xl" />
-              <div className="absolute -bottom-40 -right-40 w-96 h-96 bg-indigo-600/25 rounded-full blur-3xl" />
-            </div>
-          )}
+    <div className={`h-screen w-screen flex flex-col bg-neutral-50 dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 overflow-hidden select-none ${darkMode ? 'dark' : ''}`}>
+      {/* App Command Bar & Ribbon Navigation */}
+      <WindowsTitleBar
+        darkMode={darkMode}
+        onToggleTheme={() => setDarkMode(!darkMode)}
+        onOpenPortableModal={() => setIsPortableModalOpen(true)}
+        onOpenAboutModal={() => setIsAboutModalOpen(true)}
+        onOpenSelectorModal={() => setIsSelectorModalOpen(true)}
+        selectedCount={selectedResolverIds.length}
+        activeTab={activeTab}
+        setActiveTab={setActiveTab}
+      />
 
-          {/* Windows 11 Desktop Application Frame */}
-          <main
-            className={`w-full flex flex-col bg-neutral-50 dark:bg-neutral-950 transition-all duration-300 relative z-10 ${
-              isFullscreenWindow
-                ? 'min-h-screen rounded-none'
-                : 'max-w-[1380px] min-h-[780px] rounded-2xl shadow-2xl border border-neutral-300/80 dark:border-neutral-800/90 overflow-hidden'
-            }`}
-          >
-            {/* Windows 11 Title Bar with Rohith Varma Attribution */}
-            <WindowsTitleBar
-              darkMode={darkMode}
-              onToggleTheme={() => setDarkMode(!darkMode)}
-              isFullscreenWindow={isFullscreenWindow}
-              onToggleFullscreen={() => setIsFullscreenWindow(!isFullscreenWindow)}
-              onOpenPortableModal={() => setIsPortableModalOpen(true)}
-              onOpenAboutModal={() => setIsAboutModalOpen(true)}
-              onOpenSelectorModal={() => setIsSelectorModalOpen(true)}
-              selectedCount={selectedResolverIds.length}
-              activeTab={activeTab}
-              setActiveTab={setActiveTab}
-            />
+      {/* Window Content Viewport */}
+      <main className="flex-1 overflow-y-auto min-h-0 bg-neutral-50 dark:bg-neutral-950">
+        {activeTab === 'benchmark' && (
+          <BenchmarkView
+            results={results.filter((r) => selectedResolverIds.includes(r.resolverId))}
+            isRunning={isRunning}
+            progressPercent={progressPercent}
+            currentTestingMessage={currentTestingMessage}
+            onStartBenchmark={handleStartBenchmark}
+            onCancelBenchmark={handleCancelBenchmark}
+            onOpenAdapterModal={(r) =>
+              setSelectedAdapterResolver(r || fastestResult?.resolver || null)
+            }
+            onOpenCustomModal={() => setIsCustomModalOpen(true)}
+            onOpenSelectorModal={() => setIsSelectorModalOpen(true)}
+            onViewVisualizations={() => setActiveTab('visualize')}
+            onOpenComparison={handleOpenComparison}
+            onSelectResolverForProbe={handleSelectResolverForProbe}
+            activeDomainCount={domains.length}
+            selectedResolverCount={selectedResolverIds.length}
+            totalAvailableResolvers={allResolvers.length}
+          />
+        )}
 
-            {/* Window Content Viewport */}
-            <div className="flex-1 overflow-y-auto">
-              {activeTab === 'benchmark' && (
-                <BenchmarkView
-                  results={results.filter((r) => selectedResolverIds.includes(r.resolverId))}
-                  isRunning={isRunning}
-                  progressPercent={progressPercent}
-                  currentTestingMessage={currentTestingMessage}
-                  onStartBenchmark={handleStartBenchmark}
-                  onCancelBenchmark={handleCancelBenchmark}
-                  onOpenAdapterModal={(r) =>
-                    setSelectedAdapterResolver(r || fastestResult?.resolver || null)
-                  }
-                  onOpenCustomModal={() => setIsCustomModalOpen(true)}
-                  onOpenSelectorModal={() => setIsSelectorModalOpen(true)}
-                  onViewVisualizations={() => setActiveTab('visualize')}
-                  onOpenComparison={handleOpenComparison}
-                  onSelectResolverForProbe={handleSelectResolverForProbe}
-                  activeDomainCount={domains.length}
-                  selectedResolverCount={selectedResolverIds.length}
-                  totalAvailableResolvers={allResolvers.length}
-                />
-              )}
-
-              {activeTab === 'visualize' && (
-                <ResultsVisualization
-                  results={results.filter((r) => selectedResolverIds.includes(r.resolverId))}
-                  onOpenAdapterModal={(r) => setSelectedAdapterResolver(r)}
-                  onSelectResolverForProbe={handleSelectResolverForProbe}
-                />
-              )}
-
-              {activeTab === 'table' && (
-                <ResultsTable
-                  results={results.filter((r) => selectedResolverIds.includes(r.resolverId))}
-                  onOpenAdapterModal={(r) => setSelectedAdapterResolver(r)}
-                  onSelectResolverForProbe={handleSelectResolverForProbe}
-                  onExportCsv={handleExportCsv}
-                  onOpenComparison={handleOpenComparison}
-                />
-              )}
-
-              {activeTab === 'history' && (
-                <BenchmarkHistoryView
-                  history={history}
-                  onLoadSession={handleLoadSession}
-                  onDeleteSession={handleDeleteSession}
-                  onClearAllHistory={handleClearAllHistory}
-                  onOpenAdapterModal={(r) => setSelectedAdapterResolver(r)}
-                  currentFastestMs={fastestResult?.avgLatencyMs}
-                />
-              )}
-
-              {activeTab === 'manager' && (
-                <DnsServerManager
-                  customResolvers={customResolvers}
-                  onAddResolver={handleAddCustomResolver}
-                  onUpdateResolver={handleUpdateCustomResolver}
-                  onDeleteResolver={handleDeleteCustomResolver}
-                  onOpenAdapterModal={(r) => setSelectedAdapterResolver(r)}
-                  onSelectResolverForProbe={handleSelectResolverForProbe}
-                />
-              )}
-
-              {activeTab === 'probe' && (
-                <LiveProbeView
-                  resolvers={allResolvers}
-                  initialSelectedResolver={probeInitialResolver}
-                />
-              )}
-
-              {activeTab === 'export' && (
-                <PortableExeModal isStandaloneTab={true} />
-              )}
-            </div>
-
-            {/* Windows 11 Status Bar with Rohith Varma Attribution */}
-            <WindowsStatusBar
-              isRunning={isRunning}
-              totalTestedQueries={totalTestedQueries}
-              fastestResult={fastestResult}
-              onOpenAdapterModal={() =>
-                setSelectedAdapterResolver(fastestResult?.resolver || null)
-              }
-              onExportCsv={handleExportCsv}
-            />
-          </main>
-        </div>
-
-        {/* Modals & Dialogs */}
-        <AdapterConfigModal
-          resolver={selectedAdapterResolver}
-          onClose={() => setSelectedAdapterResolver(null)}
-        />
-
-        {isComparisonModalOpen && (
-          <ComparisonModal
-            initialResolverAId={compareResolverAId}
-            initialResolverBId={compareResolverBId}
-            results={results}
-            onClose={() => setIsComparisonModalOpen(false)}
+        {activeTab === 'visualize' && (
+          <ResultsVisualization
+            results={results.filter((r) => selectedResolverIds.includes(r.resolverId))}
             onOpenAdapterModal={(r) => setSelectedAdapterResolver(r)}
             onSelectResolverForProbe={handleSelectResolverForProbe}
           />
         )}
 
-        {isSelectorModalOpen && (
-          <ResolverSelectorModal
-            resolvers={allResolvers}
-            selectedIds={selectedResolverIds}
-            onSaveSelection={(ids) => setSelectedResolverIds(ids)}
-            onStartWithSelection={(ids) => {
-              setSelectedResolverIds(ids);
-              handleStartBenchmark('standard', ids);
-            }}
-            onClose={() => setIsSelectorModalOpen(false)}
+        {activeTab === 'table' && (
+          <ResultsTable
+            results={results.filter((r) => selectedResolverIds.includes(r.resolverId))}
+            onOpenAdapterModal={(r) => setSelectedAdapterResolver(r)}
+            onSelectResolverForProbe={handleSelectResolverForProbe}
+            onExportCsv={handleExportCsv}
+            onOpenComparison={handleOpenComparison}
           />
         )}
 
-        {isPortableModalOpen && (
-          <PortableExeModal
-            onClose={() => setIsPortableModalOpen(false)}
-            isStandaloneTab={false}
+        {activeTab === 'history' && (
+          <BenchmarkHistoryView
+            history={history}
+            onLoadSession={handleLoadSession}
+            onDeleteSession={handleDeleteSession}
+            onClearAllHistory={handleClearAllHistory}
+            onOpenAdapterModal={(r) => setSelectedAdapterResolver(r)}
+            currentFastestMs={fastestResult?.avgLatencyMs}
           />
         )}
 
-        {isCustomModalOpen && (
-          <CustomResolverModal
-            onClose={() => setIsCustomModalOpen(false)}
+        {activeTab === 'manager' && (
+          <DnsServerManager
+            customResolvers={customResolvers}
             onAddResolver={handleAddCustomResolver}
+            onUpdateResolver={handleUpdateCustomResolver}
+            onDeleteResolver={handleDeleteCustomResolver}
+            onOpenAdapterModal={(r) => setSelectedAdapterResolver(r)}
+            onSelectResolverForProbe={handleSelectResolverForProbe}
           />
         )}
 
-        {isAboutModalOpen && (
-          <AboutDialog onClose={() => setIsAboutModalOpen(false)} />
+        {activeTab === 'probe' && (
+          <LiveProbeView
+            resolvers={allResolvers}
+            initialSelectedResolver={probeInitialResolver}
+          />
         )}
-      </div>
+
+        {activeTab === 'export' && (
+          <PortableExeModal isStandaloneTab={true} />
+        )}
+      </main>
+
+      {/* Windows 11 Status Bar with Rohith Varma Attribution */}
+      <WindowsStatusBar
+        isRunning={isRunning}
+        totalTestedQueries={totalTestedQueries}
+        fastestResult={fastestResult}
+        onOpenAdapterModal={() =>
+          setSelectedAdapterResolver(fastestResult?.resolver || null)
+        }
+        onExportCsv={handleExportCsv}
+      />
+
+      {/* Modals & Dialogs */}
+      <AdapterConfigModal
+        resolver={selectedAdapterResolver}
+        onClose={() => setSelectedAdapterResolver(null)}
+      />
+
+      {isComparisonModalOpen && (
+        <ComparisonModal
+          initialResolverAId={compareResolverAId}
+          initialResolverBId={compareResolverBId}
+          results={results}
+          onClose={() => setIsComparisonModalOpen(false)}
+          onOpenAdapterModal={(r) => setSelectedAdapterResolver(r)}
+          onSelectResolverForProbe={handleSelectResolverForProbe}
+        />
+      )}
+
+      {isSelectorModalOpen && (
+        <ResolverSelectorModal
+          resolvers={allResolvers}
+          selectedIds={selectedResolverIds}
+          onSaveSelection={(ids) => setSelectedResolverIds(ids)}
+          onStartWithSelection={(ids) => {
+            setSelectedResolverIds(ids);
+            handleStartBenchmark('standard', ids);
+          }}
+          onClose={() => setIsSelectorModalOpen(false)}
+        />
+      )}
+
+      {isPortableModalOpen && (
+        <PortableExeModal
+          onClose={() => setIsPortableModalOpen(false)}
+          isStandaloneTab={false}
+        />
+      )}
+
+      {isCustomModalOpen && (
+        <CustomResolverModal
+          onClose={() => setIsCustomModalOpen(false)}
+          onAddResolver={handleAddCustomResolver}
+        />
+      )}
+
+      {isAboutModalOpen && (
+        <AboutDialog onClose={() => setIsAboutModalOpen(false)} />
+      )}
     </div>
   );
 }

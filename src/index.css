@@ -1,6 +1,17 @@
 @import "tailwindcss";
 
 @layer base {
+  html, body, #root {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    user-select: none;
+    -webkit-user-select: none;
+    background-color: #090d16;
+  }
+
   body {
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI Variable', 'Segoe UI', Roboto, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -10,6 +21,11 @@
   code, pre, .font-mono {
     font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
     font-variant-numeric: tabular-nums;
+  }
+
+  input, textarea, [contenteditable="true"], .select-text {
+    user-select: text;
+    -webkit-user-select: text;
   }
 }
 
@@ -31,4 +47,3 @@
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(150, 150, 150, 0.5);
 }
-
