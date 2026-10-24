@@ -1,0 +1,269 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720">
+  <defs>
+    <!-- Background & gradients -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090d16" />
+      <stop offset="50%" stop-color="#0d1322" />
+      <stop offset="100%" stop-color="#070a12" />
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#141c2e" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#0f1624" stop-opacity="0.95" />
+    </linearGradient>
+    <linearGradient id="accentCyan" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06b6d4" />
+      <stop offset="100%" stop-color="#3b82f6" />
+    </linearGradient>
+    <linearGradient id="fastestGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000000" flood-opacity="0.6" />
+    </filter>
+  </defs>
+
+  <style>
+    .mono { font-family: 'JetBrains Mono', 'Cascadia Code', 'Consolas', monospace; }
+    .sans { font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+  </style>
+
+  <!-- Outer Canvas Window Shadow -->
+  <rect x="20" y="20" width="1240" height="680" rx="12" fill="url(#bgGrad)" filter="url(#softShadow)" stroke="#1e293b" stroke-width="1.5" />
+
+  <!-- Native Windows 11 Title Bar -->
+  <path d="M 20 32 Q 20 20 32 20 L 1248 20 Q 1260 20 1260 32 L 1260 62 L 20 62 Z" fill="#0b1120" />
+  <line x1="20" y1="62" x2="1260" y2="62" stroke="#1e293b" stroke-width="1" />
+
+  <!-- App Title Bar Icon & Title -->
+  <rect x="36" y="32" width="18" height="18" rx="4" fill="url(#accentCyan)" />
+  <path d="M 40 41 L 44 45 L 50 36" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+  <text x="64" y="45" fill="#e2e8f0" font-size="13" font-weight="600" class="sans">DNS SpeedBench v1.0 — Standalone Windows DNS Benchmark</text>
+  <text x="500" y="45" fill="#64748b" font-size="12" class="sans">Author: Rohith Varma (rohithvrmaa@gmail.com)</text>
+
+  <!-- Native Window Controls -->
+  <!-- Minimize -->
+  <line x1="1145" y1="42" x2="1157" y2="42" stroke="#94a3b8" stroke-width="1.5" />
+  <!-- Maximize -->
+  <rect x="1185" y="36" width="11" height="11" fill="none" stroke="#94a3b8" stroke-width="1.5" />
+  <!-- Close -->
+  <line x1="1225" y1="36" x2="1235" y2="46" stroke="#94a3b8" stroke-width="1.5" />
+  <line x1="1235" y1="36" x2="1225" y2="46" stroke="#94a3b8" stroke-width="1.5" />
+
+  <!-- Header Navigation & Action Bar -->
+  <g transform="translate(44, 82)">
+    <rect x="0" y="0" width="36" height="36" rx="8" fill="#0284c7" />
+    <circle cx="18" cy="18" r="9" fill="none" stroke="#ffffff" stroke-width="2" stroke-dasharray="8 4" />
+    <text x="48" y="24" fill="#ffffff" font-size="20" font-weight="700" class="sans">DNS SpeedBench</text>
+    <rect x="216" y="8" width="56" height="20" rx="10" fill="#0369a1" fill-opacity="0.4" stroke="#0284c7" stroke-width="1" />
+    <text x="228" y="22" fill="#38bdf8" font-size="11" font-weight="600" class="mono">v1.0</text>
+    <text x="282" y="23" fill="#64748b" font-size="13" class="sans">|  Windows x64 Native Portable</text>
+
+    <!-- Top Right Action Buttons -->
+    <g transform="translate(780, 0)">
+      <!-- Add Resolver -->
+      <rect x="50" y="2" width="130" height="32" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1" />
+      <text x="75" y="22" fill="#cbd5e1" font-size="12" font-weight="600" class="sans">+ Add Custom DNS</text>
+      <!-- Run Benchmark Button -->
+      <rect x="195" y="0" width="195" height="36" rx="8" fill="url(#accentCyan)" filter="url(#glow)" />
+      <polygon points="215,13 215,25 226,19" fill="#ffffff" />
+      <text x="235" y="23" fill="#ffffff" font-size="13" font-weight="700" class="sans">Run Benchmark (50+)</text>
+    </g>
+  </g>
+
+  <!-- Metric Summary Cards -->
+  <g transform="translate(44, 140)">
+    <!-- Card 1: Fastest Resolver -->
+    <rect x="0" y="0" width="280" height="88" rx="8" fill="url(#cardGrad)" stroke="#10b981" stroke-width="1.5" />
+    <text x="20" y="26" fill="#10b981" font-size="11" font-weight="700" class="sans">🏆 FASTEST RESOLVER</text>
+    <text x="20" y="52" fill="#f8fafc" font-size="18" font-weight="700" class="sans">Cloudflare 1.1.1.1</text>
+    <text x="20" y="74" fill="#34d399" font-size="20" font-weight="800" class="mono">11.2 ms</text>
+    <text x="110" y="73" fill="#94a3b8" font-size="11" class="sans">±0.3ms jitter (100% win)</text>
+
+    <!-- Card 2: Average Latency -->
+    <rect x="304" y="0" width="280" height="88" rx="8" fill="url(#cardGrad)" stroke="#1e293b" stroke-width="1" />
+    <text x="324" y="26" fill="#94a3b8" font-size="11" font-weight="600" class="sans">AVERAGE POOL LATENCY</text>
+    <text x="324" y="52" fill="#f8fafc" font-size="18" font-weight="700" class="sans">Global Resolvers</text>
+    <text x="324" y="74" fill="#38bdf8" font-size="20" font-weight="800" class="mono">18.6 ms</text>
+    <text x="415" y="73" fill="#64748b" font-size="11" class="sans">54 servers benchmarked</text>
+
+    <!-- Card 3: DNSSEC Protection -->
+    <rect x="608" y="0" width="280" height="88" rx="8" fill="url(#cardGrad)" stroke="#1e293b" stroke-width="1" />
+    <text x="628" y="26" fill="#94a3b8" font-size="11" font-weight="600" class="sans">SECURITY INTEGRITY</text>
+    <text x="628" y="52" fill="#f8fafc" font-size="18" font-weight="700" class="sans">DNSSEC Validated</text>
+    <text x="628" y="74" fill="#a855f7" font-size="20" font-weight="800" class="mono">48 / 54</text>
+    <text x="715" y="73" fill="#10b981" font-size="11" class="sans">89% security coverage</text>
+
+    <!-- Card 4: Active Adapter -->
+    <rect x="912" y="0" width="280" height="88" rx="8" fill="url(#cardGrad)" stroke="#1e293b" stroke-width="1" />
+    <text x="932" y="26" fill="#94a3b8" font-size="11" font-weight="600" class="sans">ACTIVE ADAPTER DETECTED</text>
+    <text x="932" y="52" fill="#f8fafc" font-size="16" font-weight="700" class="sans">Wi-Fi (Intel AX201)</text>
+    <text x="932" y="73" fill="#cbd5e1" font-size="12" class="mono">192.168.1.104</text>
+    <rect x="1110" y="56" width="65" height="20" rx="4" fill="#0284c7" />
+    <text x="1118" y="70" fill="#ffffff" font-size="10" font-weight="700" class="sans">READY</text>
+  </g>
+
+  <!-- Benchmark Results Table Container -->
+  <g transform="translate(44, 250)">
+    <rect x="0" y="0" width="1192" height="425" rx="10" fill="#0f172a" fill-opacity="0.75" stroke="#1e293b" stroke-width="1" />
+
+    <!-- Table Header -->
+    <rect x="0" y="0" width="1192" height="42" rx="10" fill="#162032" />
+    <line x1="0" y1="42" x2="1192" y2="42" stroke="#1e293b" stroke-width="1" />
+    <text x="24" y="26" fill="#64748b" font-size="11" font-weight="700" class="sans">RANK</text>
+    <text x="80" y="26" fill="#64748b" font-size="11" font-weight="700" class="sans">RESOLVER PROVIDER</text>
+    <text x="330" y="26" fill="#64748b" font-size="11" font-weight="700" class="sans">PRIMARY / SECONDARY IP</text>
+    <text x="540" y="26" fill="#64748b" font-size="11" font-weight="700" class="sans">AVG LATENCY</text>
+    <text x="680" y="26" fill="#64748b" font-size="11" font-weight="700" class="sans">JITTER</text>
+    <text x="780" y="26" fill="#64748b" font-size="11" font-weight="700" class="sans">DNSSEC</text>
+    <text x="880" y="26" fill="#64748b" font-size="11" font-weight="700" class="sans">CATEGORY</text>
+    <text x="1040" y="26" fill="#64748b" font-size="11" font-weight="700" class="sans">WINDOWS ACTION</text>
+
+    <!-- Row 1: Cloudflare -->
+    <g transform="translate(0, 43)">
+      <rect x="0" y="0" width="1192" height="60" fill="#132438" fill-opacity="0.4" />
+      <line x1="0" y1="60" x2="1192" y2="60" stroke="#1e293b" stroke-width="0.8" />
+      <circle cx="38" cy="30" r="12" fill="#10b981" />
+      <text x="35" y="34" fill="#ffffff" font-size="11" font-weight="800" class="mono">1</text>
+      <!-- Provider -->
+      <text x="80" y="26" fill="#ffffff" font-size="14" font-weight="700" class="sans">Cloudflare Public DNS</text>
+      <text x="80" y="44" fill="#38bdf8" font-size="11" class="sans">Cloudflare, Inc. • Anycast 300+ PoPs</text>
+      <!-- IPs -->
+      <text x="330" y="27" fill="#38bdf8" font-size="12" class="mono">1.1.1.1</text>
+      <text x="330" y="44" fill="#64748b" font-size="11" class="mono">1.0.0.1 • 2606:4700:4700::1111</text>
+      <!-- Latency Badge -->
+      <rect x="540" y="16" width="95" height="28" rx="6" fill="#064e3b" stroke="#10b981" stroke-width="1" />
+      <text x="555" y="35" fill="#34d399" font-size="14" font-weight="800" class="mono">11.2 ms</text>
+      <!-- Jitter -->
+      <text x="680" y="35" fill="#94a3b8" font-size="12" class="mono">0.3 ms</text>
+      <!-- DNSSEC -->
+      <rect x="780" y="20" width="48" height="20" rx="4" fill="#14532d" />
+      <text x="788" y="34" fill="#4ade80" font-size="10" font-weight="700" class="sans">PASS</text>
+      <!-- Category -->
+      <text x="880" y="35" fill="#cbd5e1" font-size="12" class="sans">General / Speed</text>
+      <!-- Action Button -->
+      <rect x="1030" y="14" width="140" height="32" rx="6" fill="#0284c7" />
+      <text x="1046" y="34" fill="#ffffff" font-size="12" font-weight="700" class="sans">⚡ Configure Adapter</text>
+    </g>
+
+    <!-- Row 2: Quad9 -->
+    <g transform="translate(0, 104)">
+      <rect x="0" y="0" width="1192" height="60" fill="#0f172a" />
+      <line x1="0" y1="60" x2="1192" y2="60" stroke="#1e293b" stroke-width="0.8" />
+      <circle cx="38" cy="30" r="12" fill="#334155" />
+      <text x="35" y="34" fill="#94a3b8" font-size="11" font-weight="700" class="mono">2</text>
+      <!-- Provider -->
+      <text x="80" y="26" fill="#f1f5f9" font-size="14" font-weight="600" class="sans">Quad9 Security (Malware Block)</text>
+      <text x="80" y="44" fill="#94a3b8" font-size="11" class="sans">Quad9 Foundation • Swiss Privacy</text>
+      <!-- IPs -->
+      <text x="330" y="27" fill="#cbd5e1" font-size="12" class="mono">9.9.9.9</text>
+      <text x="330" y="44" fill="#64748b" font-size="11" class="mono">149.112.112.112</text>
+      <!-- Latency Badge -->
+      <rect x="540" y="16" width="95" height="28" rx="6" fill="#064e3b" fill-opacity="0.6" stroke="#059669" stroke-width="1" />
+      <text x="555" y="35" fill="#34d399" font-size="14" font-weight="800" class="mono">13.5 ms</text>
+      <!-- Jitter -->
+      <text x="680" y="35" fill="#94a3b8" font-size="12" class="mono">0.4 ms</text>
+      <!-- DNSSEC -->
+      <rect x="780" y="20" width="48" height="20" rx="4" fill="#14532d" />
+      <text x="788" y="34" fill="#4ade80" font-size="10" font-weight="700" class="sans">PASS</text>
+      <!-- Category -->
+      <text x="880" y="35" fill="#cbd5e1" font-size="12" class="sans">Security / Threat</text>
+      <!-- Action Button -->
+      <rect x="1030" y="14" width="140" height="32" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1" />
+      <text x="1058" y="34" fill="#cbd5e1" font-size="12" font-weight="600" class="sans">Configure Adapter</text>
+    </g>
+
+    <!-- Row 3: Google Public DNS -->
+    <g transform="translate(0, 165)">
+      <rect x="0" y="0" width="1192" height="60" fill="#0f172a" />
+      <line x1="0" y1="60" x2="1192" y2="60" stroke="#1e293b" stroke-width="0.8" />
+      <circle cx="38" cy="30" r="12" fill="#334155" />
+      <text x="35" y="34" fill="#94a3b8" font-size="11" font-weight="700" class="mono">3</text>
+      <!-- Provider -->
+      <text x="80" y="26" fill="#f1f5f9" font-size="14" font-weight="600" class="sans">Google Public DNS</text>
+      <text x="80" y="44" fill="#94a3b8" font-size="11" class="sans">Google LLC • Global Anycast</text>
+      <!-- IPs -->
+      <text x="330" y="27" fill="#cbd5e1" font-size="12" class="mono">8.8.8.8</text>
+      <text x="330" y="44" fill="#64748b" font-size="11" class="mono">8.8.4.4 • 2001:4860:4860::8888</text>
+      <!-- Latency Badge -->
+      <rect x="540" y="16" width="95" height="28" rx="6" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+      <text x="555" y="35" fill="#38bdf8" font-size="14" font-weight="800" class="mono">15.1 ms</text>
+      <!-- Jitter -->
+      <text x="680" y="35" fill="#94a3b8" font-size="12" class="mono">0.6 ms</text>
+      <!-- DNSSEC -->
+      <rect x="780" y="20" width="48" height="20" rx="4" fill="#14532d" />
+      <text x="788" y="34" fill="#4ade80" font-size="10" font-weight="700" class="sans">PASS</text>
+      <!-- Category -->
+      <text x="880" y="35" fill="#cbd5e1" font-size="12" class="sans">General / Speed</text>
+      <!-- Action Button -->
+      <rect x="1030" y="14" width="140" height="32" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1" />
+      <text x="1058" y="34" fill="#cbd5e1" font-size="12" font-weight="600" class="sans">Configure Adapter</text>
+    </g>
+
+    <!-- Row 4: OpenDNS -->
+    <g transform="translate(0, 226)">
+      <rect x="0" y="0" width="1192" height="60" fill="#0f172a" />
+      <line x1="0" y1="60" x2="1192" y2="60" stroke="#1e293b" stroke-width="0.8" />
+      <circle cx="38" cy="30" r="12" fill="#334155" />
+      <text x="35" y="34" fill="#94a3b8" font-size="11" font-weight="700" class="mono">4</text>
+      <!-- Provider -->
+      <text x="80" y="26" fill="#f1f5f9" font-size="14" font-weight="600" class="sans">Cisco OpenDNS Home</text>
+      <text x="80" y="44" fill="#94a3b8" font-size="11" class="sans">Cisco Systems • Content Filtering</text>
+      <!-- IPs -->
+      <text x="330" y="27" fill="#cbd5e1" font-size="12" class="mono">208.67.222.222</text>
+      <text x="330" y="44" fill="#64748b" font-size="11" class="mono">208.67.220.220</text>
+      <!-- Latency Badge -->
+      <rect x="540" y="16" width="95" height="28" rx="6" fill="#1e293b" stroke="#475569" stroke-width="1" />
+      <text x="555" y="35" fill="#94a3b8" font-size="14" font-weight="800" class="mono">17.8 ms</text>
+      <!-- Jitter -->
+      <text x="680" y="35" fill="#94a3b8" font-size="12" class="mono">0.8 ms</text>
+      <!-- DNSSEC -->
+      <rect x="780" y="20" width="48" height="20" rx="4" fill="#14532d" />
+      <text x="788" y="34" fill="#4ade80" font-size="10" font-weight="700" class="sans">PASS</text>
+      <!-- Category -->
+      <text x="880" y="35" fill="#cbd5e1" font-size="12" class="sans">Family / Safety</text>
+      <!-- Action Button -->
+      <rect x="1030" y="14" width="140" height="32" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1" />
+      <text x="1058" y="34" fill="#cbd5e1" font-size="12" font-weight="600" class="sans">Configure Adapter</text>
+    </g>
+
+    <!-- Row 5: AdGuard -->
+    <g transform="translate(0, 287)">
+      <rect x="0" y="0" width="1192" height="60" fill="#0f172a" />
+      <line x1="0" y1="60" x2="1192" y2="60" stroke="#1e293b" stroke-width="0.8" />
+      <circle cx="38" cy="30" r="12" fill="#334155" />
+      <text x="35" y="34" fill="#94a3b8" font-size="11" font-weight="700" class="mono">5</text>
+      <!-- Provider -->
+      <text x="80" y="26" fill="#f1f5f9" font-size="14" font-weight="600" class="sans">AdGuard Default DNS</text>
+      <text x="80" y="44" fill="#94a3b8" font-size="11" class="sans">AdGuard Software • Ad &amp; Tracker Blocker</text>
+      <!-- IPs -->
+      <text x="330" y="27" fill="#cbd5e1" font-size="12" class="mono">94.140.14.14</text>
+      <text x="330" y="44" fill="#64748b" font-size="11" class="mono">94.140.15.15</text>
+      <!-- Latency Badge -->
+      <rect x="540" y="16" width="95" height="28" rx="6" fill="#1e293b" stroke="#475569" stroke-width="1" />
+      <text x="555" y="35" fill="#94a3b8" font-size="14" font-weight="800" class="mono">19.4 ms</text>
+      <!-- Jitter -->
+      <text x="680" y="35" fill="#94a3b8" font-size="12" class="mono">0.7 ms</text>
+      <!-- DNSSEC -->
+      <rect x="780" y="20" width="48" height="20" rx="4" fill="#14532d" />
+      <text x="788" y="34" fill="#4ade80" font-size="10" font-weight="700" class="sans">PASS</text>
+      <!-- Category -->
+      <text x="880" y="35" fill="#cbd5e1" font-size="12" class="sans">Ad-Blocking</text>
+      <!-- Action Button -->
+      <rect x="1030" y="14" width="140" height="32" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1" />
+      <text x="1058" y="34" fill="#cbd5e1" font-size="12" font-weight="600" class="sans">Configure Adapter</text>
+    </g>
+
+    <!-- Bottom Status / Peering Bar -->
+    <g transform="translate(0, 355)">
+      <rect x="0" y="0" width="1192" height="70" rx="0" fill="#0b1120" />
+      <text x="24" y="25" fill="#e2e8f0" font-size="12" font-weight="700" class="sans">⚡ Instant Recommendation:</text>
+      <text x="195" y="25" fill="#94a3b8" font-size="12" class="sans">Switching your primary DNS to Cloudflare (1.1.1.1) will reduce lookup latency by <tspan fill="#10b981" font-weight="700">62%</tspan> compared to default ISP gateway.</text>
+      <text x="24" y="48" fill="#64748b" font-size="11" class="mono">54 / 54 Resolvers Active  •  Zero Telemetry  •  Native Win32 High-Precision Query Engine</text>
+    </g>
+  </g>
+</svg>
