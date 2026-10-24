@@ -13,8 +13,8 @@ No setup wizard, no installer, no administrative installation required. Just dou
 
 | Portable Executable | Architecture | Target Systems | Size | SHA-256 Hash |
 | :--- | :--- | :--- | :--- | :--- |
-| **[`DNS-SpeedBench-v1.0-win-x64-portable.exe`](https://github.com/RohithVrmaa/DNS-Benchmark-App/releases/download/v1.0/DNS-SpeedBench-v1.0-win-x64-portable.exe)** | **64-bit (x64)** | Modern Windows 11 & Windows 10 *(Recommended)* | 82 KB | `b52013c4279aeed6f82be3cca21e6c691dce454b9cb8860f0133f1fb02029ce1` |
-| **[`DNS-SpeedBench-v1.0-win-x86-portable.exe`](https://github.com/RohithVrmaa/DNS-Benchmark-App/releases/download/v1.0/DNS-SpeedBench-v1.0-win-x86-portable.exe)** | **32-bit (x86)** | Legacy 32-bit Windows, Tablets, IoT, Embedded | 84 KB | `11c24d0b4864d8397482d2921f3e6d00977858c7b7280ad6d7e040f5527f743d` |
+| **[`DNS-SpeedBench-v1.0-win-x64-portable.exe`](https://github.com/RohithVrmaa/DNS-Benchmark-App/releases/download/v1.0/DNS-SpeedBench-v1.0-win-x64-portable.exe)** | **64-bit (x64 GUI)** | Modern Windows 11 & Windows 10 *(Full Desktop GUI)* | ~81 MB | `d27b6a524fc3596b43fb268c7dd42c45b4f40d6e13b1d387fd7976614e9585cb` |
+| **[`DNS-SpeedBench-v1.0-win-x86-portable.exe`](https://github.com/RohithVrmaa/DNS-Benchmark-App/releases/download/v1.0/DNS-SpeedBench-v1.0-win-x86-portable.exe)** | **32-bit (x86 GUI)** | Legacy 32-bit Windows, Tablets, IoT *(Full Desktop GUI)* | ~90 MB | `42d2537fa1215bb4e4a5ef04f6d52cddd4a1636e2cc6eb733e4158baf0369fbc` |
 | **[`SHA256SUMS.txt`](https://github.com/RohithVrmaa/DNS-Benchmark-App/releases/download/v1.0/SHA256SUMS.txt)** | **Checksums** | All Architectures Verification | < 1 KB | Cryptographic Verification |
 
 ---
