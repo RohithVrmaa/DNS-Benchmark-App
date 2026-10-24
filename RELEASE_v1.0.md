@@ -11,13 +11,11 @@
 
 No setup wizard, no installer, no administrative installation required. Just double-click and run from your Downloads folder, Desktop, or USB flash drive.
 
-| Binary Asset | Architecture | Target Systems | Size | Checksum (SHA-256) |
+| Portable Executable | Architecture | Target Systems | Size | SHA-256 Hash |
 | :--- | :--- | :--- | :--- | :--- |
-| **[`DNS-SpeedBench-v1.0-win-x64-portable.exe`](https://github.com/RohithVrmaa/DNS-Benchmark-App/releases/download/v1.0/DNS-SpeedBench-v1.0-win-x64-portable.exe)** | **64-bit (x64)** | Modern Windows 10/11 64-bit *(Recommended)* | ~4.2 MB | `SHA256SUMS.txt` |
-| **[`DNS-SpeedBench-v1.0-win-x86-portable.exe`](https://github.com/RohithVrmaa/DNS-Benchmark-App/releases/download/v1.0/DNS-SpeedBench-v1.0-win-x86-portable.exe)** | **32-bit (x86)** | Legacy 32-bit Windows, Tablets, Netbooks, IoT | ~3.8 MB | `SHA256SUMS.txt` |
-| **[`DNS-SpeedBench-v1.0-x64-Launcher.bat`](https://github.com/RohithVrmaa/DNS-Benchmark-App/releases/download/v1.0/DNS-SpeedBench-v1.0-x64-Launcher.bat)** | **x64 Script** | Double-click script launcher for 64-bit | < 5 KB | `SHA256SUMS.txt` |
-| **[`DNS-SpeedBench-v1.0-x86-Launcher.bat`](https://github.com/RohithVrmaa/DNS-Benchmark-App/releases/download/v1.0/DNS-SpeedBench-v1.0-x86-Launcher.bat)** | **x86 Script** | Double-click script launcher for 32-bit | < 5 KB | `SHA256SUMS.txt` |
-| **[`DNSBenchmark-Source.cs`](https://github.com/RohithVrmaa/DNS-Benchmark-App/releases/download/v1.0/DNSBenchmark-Source.cs)** | **C# Source** | Standalone source (compiles with built-in `csc.exe`) | ~8 KB | `SHA256SUMS.txt` |
+| **[`DNS-SpeedBench-v1.0-win-x64-portable.exe`](https://github.com/RohithVrmaa/DNS-Benchmark-App/releases/download/v1.0/DNS-SpeedBench-v1.0-win-x64-portable.exe)** | **64-bit (x64)** | Modern Windows 11 & Windows 10 *(Recommended)* | 82 KB | `b52013c4279aeed6f82be3cca21e6c691dce454b9cb8860f0133f1fb02029ce1` |
+| **[`DNS-SpeedBench-v1.0-win-x86-portable.exe`](https://github.com/RohithVrmaa/DNS-Benchmark-App/releases/download/v1.0/DNS-SpeedBench-v1.0-win-x86-portable.exe)** | **32-bit (x86)** | Legacy 32-bit Windows, Tablets, IoT, Embedded | 84 KB | `11c24d0b4864d8397482d2921f3e6d00977858c7b7280ad6d7e040f5527f743d` |
+| **[`SHA256SUMS.txt`](https://github.com/RohithVrmaa/DNS-Benchmark-App/releases/download/v1.0/SHA256SUMS.txt)** | **Checksums** | All Architectures Verification | < 1 KB | Cryptographic Verification |
 
 ---
 
