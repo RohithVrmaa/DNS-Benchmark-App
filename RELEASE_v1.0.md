@@ -1,60 +1,45 @@
-# DNS SpeedBench v1.0 — Portable Windows Release
+# DNS SpeedBench v1.0 — Portable Windows GUI Release
 
 **Author & Lead Developer**: Rohith Varma ([rohithvrmaa@gmail.com](mailto:rohithvrmaa@gmail.com))  
 **Release Tag**: `v1.0`  
 **License**: Apache 2.0  
-**Target OS**: Windows 11, Windows 10, Windows 8.1, Windows 7, Windows Server (2016+)
+**Target OS**: Windows 11, Windows 10, Windows 8.1, Windows 7, Windows Server
 
 ---
 
-## 🚀 Downloads (Portable Zero-Install Executables)
+## 🚀 Downloads (Lightweight Portable Windows GUI Executables)
 
-No setup wizard, no installer, no administrative installation required. Just double-click and run from your Downloads folder, Desktop, or USB flash drive.
+No setup wizard, no installer, no administrative installation required. Just double-click and run from your Downloads folder, Desktop, or USB flash drive. Launches directly into the dedicated, modern desktop graphical user interface with zero console prompt.
 
 | Portable Executable | Architecture | Target Systems | Size | SHA-256 Hash |
 | :--- | :--- | :--- | :--- | :--- |
-| **[`DNS-SpeedBench-v1.0-win-x64-portable.exe`](https://github.com/RohithVrmaa/DNS-Benchmark-App/releases/download/v1.0/DNS-SpeedBench-v1.0-win-x64-portable.exe)** | **64-bit (x64 GUI)** | Modern Windows 11 & Windows 10 *(Full Desktop GUI)* | ~81 MB | `d27b6a524fc3596b43fb268c7dd42c45b4f40d6e13b1d387fd7976614e9585cb` |
-| **[`DNS-SpeedBench-v1.0-win-x86-portable.exe`](https://github.com/RohithVrmaa/DNS-Benchmark-App/releases/download/v1.0/DNS-SpeedBench-v1.0-win-x86-portable.exe)** | **32-bit (x86 GUI)** | Legacy 32-bit Windows, Tablets, IoT *(Full Desktop GUI)* | ~90 MB | `42d2537fa1215bb4e4a5ef04f6d52cddd4a1636e2cc6eb733e4158baf0369fbc` |
-| **[`SHA256SUMS.txt`](https://github.com/RohithVrmaa/DNS-Benchmark-App/releases/download/v1.0/SHA256SUMS.txt)** | **Checksums** | All Architectures Verification | < 1 KB | Cryptographic Verification |
+| **[`DNS-SpeedBench-v1.0-win-x64-portable.exe`](https://github.com/RohithVrmaa/DNS-Benchmark-App/releases/download/v1.0/DNS-SpeedBench-v1.0-win-x64-portable.exe)** | **64-bit (x64 GUI)** | Windows 11 & Windows 10 *(Full Desktop GUI)* | **~573 KB** | `a5418a02e5863029eb14b37feeccc5eca1770e9717cd0d92c173bcaf1150bb73` |
+| **[`DNS-SpeedBench-v1.0-win-x86-portable.exe`](https://github.com/RohithVrmaa/DNS-Benchmark-App/releases/download/v1.0/DNS-SpeedBench-v1.0-win-x86-portable.exe)** | **32-bit (x86 GUI)** | Legacy 32-bit Windows, Tablets, IoT *(Full Desktop GUI)* | **~578 KB** | `1247bccf908f20cdccf0fcdc103d920368f5696aef100250685f682fce710c5d` |
+| **[`SHA256SUMS.txt`](https://github.com/RohithVrmaa/DNS-Benchmark-App/releases/download/v1.0/SHA256SUMS.txt)** | **Checksums** | Cryptographic Verification | < 1 KB | `0dbbee7dc0aa62d3a32131a39bb87601ed5d4e6f06bde64553afd2d91ac14482` |
 
 ---
 
 ## 🌟 What's New in Version 1.0
 
+- **Ultra-Lightweight Native Binary (< 600 KB)**:
+  - Reduced executable footprint from bloated 80+ MB Electron wrappers down to a clean, native Win32 binary of ~570 KB.
+  - Zero false positives: completely eliminates heuristic dropper alerts (such as `Doplik!pz`) caused by generic SFX/NSIS self-extractors.
+- **Dedicated Desktop GUI Window**:
+  - Launches the full interactive DNS Benchmark application in a dedicated, chromeless desktop window (no console/terminal window, no browser tabs, no URL bar).
 - **Dual Architecture Support**:
   - **64-bit (x64)** build optimized for modern multi-core AMD/Intel Windows 10/11 environments.
   - **32-bit (x86)** build ensuring full backward compatibility on legacy 32-bit Windows operating systems.
-- **50+ Pre-Configured Resolvers**:
-  - Cloudflare, Google Public DNS, Quad9, Cisco OpenDNS, AdGuard, NextDNS, Control D, Mullvad, DNS0.eu, Gcore, Level 3, Verisign, and regional/privacy endpoints.
+- **50+ Pre-Configured Anycast Resolvers**:
+  - Cloudflare (1.1.1.1, Security, Family), Google Public DNS (8.8.8.8), Quad9 (9.9.9.9), Cisco OpenDNS, AdGuard, NextDNS, Control D, Mullvad, DNS0.eu, Gcore, Level 3, Verisign, and regional/privacy endpoints.
 - **Domain Latency Heatmap**:
-  - Cross-domain response matrix across 10 top destination domains (`google.com`, `cloudflare.com`, `microsoft.com`, etc.).
+  - Cross-domain response matrix across top destination domains (`google.com`, `cloudflare.com`, `microsoft.com`, `wikipedia.org`, etc.).
   - Automated throttling and peering congestion detection with real-time spike indicators (`🔥`).
-- **Head-to-Head Comparison Mode**:
-  - Side-by-side performance diffing between any two chosen DNS servers with jitter and reliability metrics.
+- **Interactive Visualizations & Comparisons**:
+  - Real-time comparison bar charts, jitter matrices, and longitudinal performance history tracking.
 - **DNS Server Management**:
-  - Add, test, edit, and save custom local router gateway IPs (`192.168.1.1`) or private DNS servers with local storage persistence.
-- **Benchmark History**:
-  - Automatic session logging to track network routing improvements over time.
-- **Zero-Pollution Portable Architecture**:
-  - Does not touch the Windows Registry.
-  - Leaves zero residual files in `AppData`.
-  - Microsecond precision socket ping and resolution.
-
----
-
-## 🛠️ How to Compile Manually on Windows (Zero Tools Required)
-
-Both 32-bit and 64-bit binaries can be compiled directly on any Windows PC using Microsoft's native `.NET Framework` compiler:
-
-### 64-bit (x64):
-```cmd
-C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe /platform:x64 /optimize+ /out:DNS-SpeedBench-v1.0-win-x64-portable.exe DNSBenchmark.cs
-```
-
-### 32-bit (x86):
-```cmd
-C:\Windows\Microsoft.NET\Framework\v4.0.30319\csc.exe /platform:x86 /optimize+ /out:DNS-SpeedBench-v1.0-win-x86-portable.exe DNSBenchmark.cs
-```
+  - Add, test, edit, and save custom router gateway IPs (`192.168.1.1`) or private DNS servers.
+- **One-Click Configuration Exporter**:
+  - Export network benchmarks to CSV, JSON, and generate elevated PowerShell/CMD batch scripts for instant 1-click DNS configuration.
 
 ---
 

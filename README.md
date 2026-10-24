@@ -15,10 +15,10 @@ DNS SpeedBench is a modern, standalone Windows desktop application designed to b
 
 No setup wizard, no installer, no administrative installation required. Simply download and double-click to run on any Windows system:
 
-| Portable Binary | Architecture | Target Platform | Description |
-| :--- | :--- | :--- | :--- |
-| **[`DNS-SpeedBench-v1.0-win-x64-portable.exe`](https://github.com/RohithVrmaa/DNS-Benchmark-App/releases/download/v1.0/DNS-SpeedBench-v1.0-win-x64-portable.exe)** | **64-bit (x64)** | Windows 11 & Windows 10 (64-bit) | Native high-performance 64-bit portable executable *(Recommended)* |
-| **[`DNS-SpeedBench-v1.0-win-x86-portable.exe`](https://github.com/RohithVrmaa/DNS-Benchmark-App/releases/download/v1.0/DNS-SpeedBench-v1.0-win-x86-portable.exe)** | **32-bit (x86)** | Windows 7 / 8 / 10 (32-bit) & Embedded | Native legacy 32-bit compatible portable executable |
+| Portable Binary | Architecture | Target Platform | Size | Description |
+| :--- | :--- | :--- | :--- | :--- |
+| **[`DNS-SpeedBench-v1.0-win-x64-portable.exe`](https://github.com/RohithVrmaa/DNS-Benchmark-App/releases/download/v1.0/DNS-SpeedBench-v1.0-win-x64-portable.exe)** | **64-bit (x64)** | Windows 11 & Windows 10 (64-bit) | **~573 KB** | Native standalone desktop GUI portable executable *(Recommended)* |
+| **[`DNS-SpeedBench-v1.0-win-x86-portable.exe`](https://github.com/RohithVrmaa/DNS-Benchmark-App/releases/download/v1.0/DNS-SpeedBench-v1.0-win-x86-portable.exe)** | **32-bit (x86)** | Windows 7 / 8 / 10 (32-bit) & Embedded | **~578 KB** | Native standalone legacy 32-bit compatible GUI executable |
 
 ---
 
