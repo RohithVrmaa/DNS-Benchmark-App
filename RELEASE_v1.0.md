@@ -13,11 +13,11 @@ No setup wizard, no installer, no administrative installation required. Just dou
 
 | Binary Asset | Architecture | Target Systems | Size | Checksum (SHA-256) |
 | :--- | :--- | :--- | :--- | :--- |
-| **[`DNS-SpeedBench-v1.0-win-x64-portable.exe`](https://github.com/rohithvrmaa/dns-speedbench/releases/download/v1.0/DNS-SpeedBench-v1.0-win-x64-portable.exe)** | **64-bit (x64)** | Modern Windows 10/11 64-bit *(Recommended)* | ~4.2 MB | `SHA256SUMS.txt` |
-| **[`DNS-SpeedBench-v1.0-win-x86-portable.exe`](https://github.com/rohithvrmaa/dns-speedbench/releases/download/v1.0/DNS-SpeedBench-v1.0-win-x86-portable.exe)** | **32-bit (x86)** | Legacy 32-bit Windows, Tablets, Netbooks, IoT | ~3.8 MB | `SHA256SUMS.txt` |
-| **[`DNS-SpeedBench-v1.0-x64-Launcher.bat`](https://github.com/rohithvrmaa/dns-speedbench/releases/download/v1.0/DNS-SpeedBench-v1.0-x64-Launcher.bat)** | **x64 Script** | Double-click script launcher for 64-bit | < 5 KB | `SHA256SUMS.txt` |
-| **[`DNS-SpeedBench-v1.0-x86-Launcher.bat`](https://github.com/rohithvrmaa/dns-speedbench/releases/download/v1.0/DNS-SpeedBench-v1.0-x86-Launcher.bat)** | **x86 Script** | Double-click script launcher for 32-bit | < 5 KB | `SHA256SUMS.txt` |
-| **[`DNSBenchmark-Source.cs`](https://github.com/rohithvrmaa/dns-speedbench/releases/download/v1.0/DNSBenchmark-Source.cs)** | **C# Source** | Standalone source (compiles with built-in `csc.exe`) | ~8 KB | `SHA256SUMS.txt` |
+| **[`DNS-SpeedBench-v1.0-win-x64-portable.exe`](https://github.com/RohithVrmaa/DNS-Benchmark-App/releases/download/v1.0/DNS-SpeedBench-v1.0-win-x64-portable.exe)** | **64-bit (x64)** | Modern Windows 10/11 64-bit *(Recommended)* | ~4.2 MB | `SHA256SUMS.txt` |
+| **[`DNS-SpeedBench-v1.0-win-x86-portable.exe`](https://github.com/RohithVrmaa/DNS-Benchmark-App/releases/download/v1.0/DNS-SpeedBench-v1.0-win-x86-portable.exe)** | **32-bit (x86)** | Legacy 32-bit Windows, Tablets, Netbooks, IoT | ~3.8 MB | `SHA256SUMS.txt` |
+| **[`DNS-SpeedBench-v1.0-x64-Launcher.bat`](https://github.com/RohithVrmaa/DNS-Benchmark-App/releases/download/v1.0/DNS-SpeedBench-v1.0-x64-Launcher.bat)** | **x64 Script** | Double-click script launcher for 64-bit | < 5 KB | `SHA256SUMS.txt` |
+| **[`DNS-SpeedBench-v1.0-x86-Launcher.bat`](https://github.com/RohithVrmaa/DNS-Benchmark-App/releases/download/v1.0/DNS-SpeedBench-v1.0-x86-Launcher.bat)** | **x86 Script** | Double-click script launcher for 32-bit | < 5 KB | `SHA256SUMS.txt` |
+| **[`DNSBenchmark-Source.cs`](https://github.com/RohithVrmaa/DNS-Benchmark-App/releases/download/v1.0/DNSBenchmark-Source.cs)** | **C# Source** | Standalone source (compiles with built-in `csc.exe`) | ~8 KB | `SHA256SUMS.txt` |
 
 ---
 
