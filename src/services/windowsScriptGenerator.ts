@@ -80,17 +80,24 @@ export function generateRegistryScript(resolver: DNSResolver): string {
  * Generates a standalone, zero-installation Windows Batch Benchmark Tool (.bat)
  * Users can double-click this portable file on any Windows PC to benchmark DNS directly in CMD.
  */
-export function generatePortableBatchBenchmark(): string {
+export function generatePortableBatchBenchmark(arch: 'x64' | 'x86' = 'x64'): string {
+  const is64 = arch === 'x64';
+  const cscPath = is64
+    ? 'C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\csc.exe'
+    : 'C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319\\csc.exe';
+  const exeName = is64 ? 'DNS-SpeedBench-v1.0-x64.exe' : 'DNS-SpeedBench-v1.0-x86.exe';
+
   return `@echo off
 setlocal enabledelayedexpansion
-title DNS SpeedBench v1.0 by Rohith Varma (Portable Executable)
+title DNS SpeedBench v1.0 [${is64 ? '64-bit x64' : '32-bit x86'} Portable] by Rohith Varma
 color 0B
 
 echo ======================================================================
-echo    DNS SPEEDBENCH v1.0 - PORTABLE WINDOWS BENCHMARK TOOL
+echo    DNS SPEEDBENCH v1.0 - PORTABLE WINDOWS BENCHMARK TOOL (${is64 ? '64-bit x64' : '32-bit x86'})
 echo    Author: Rohith Varma ^| Standalone Executable (Zero Installation)
 echo ======================================================================
 echo.
+echo Architecture: ${is64 ? '64-bit (x64 Modern Windows 10/11)' : '32-bit (x86 Legacy / Compatible)'}
 echo Benchmarking top public DNS resolvers from your physical connection...
 echo Please wait while ping and DNS resolution latencies are measured...
 echo.
@@ -148,6 +155,66 @@ if "%choice%"=="4" (
 echo.
 echo Thank you for using DNS SpeedBench by Rohith Varma.
 pause
+`;
+}
+
+/**
+ * Generates automated .bat compile and build scripts for specific architecture
+ */
+export function generateBuildBatScript(arch: 'x64' | 'x86' | 'both'): string {
+  if (arch === 'both') {
+    return `@echo off
+echo ======================================================================
+echo    DNS SPEEDBENCH v1.0 - MULTI-ARCH PORTABLE BUILDER
+echo    Author: Rohith Varma
+echo ======================================================================
+echo.
+echo [1/2] Compiling 64-bit Portable Executable (x64)...
+set "CSC64=C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\csc.exe"
+if not exist "%CSC64%" set "CSC64=C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319\\csc.exe"
+"%CSC64%" /platform:x64 /optimize+ /out:DNS-SpeedBench-v1.0-x64.exe DNSBenchmark.cs
+
+echo.
+echo [2/2] Compiling 32-bit Portable Executable (x86)...
+set "CSC32=C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319\\csc.exe"
+"%CSC32%" /platform:x86 /optimize+ /out:DNS-SpeedBench-v1.0-x86.exe DNSBenchmark.cs
+
+echo.
+echo ======================================================================
+echo Build Complete! Generated Portable Files:
+echo  - DNS-SpeedBench-v1.0-x64.exe (Windows 10/11 64-bit)
+echo  - DNS-SpeedBench-v1.0-x86.exe (Windows 32-bit / Legacy)
+echo ======================================================================
+pause
+`;
+  }
+
+  const is64 = arch === 'x64';
+  const cscPath = is64
+    ? 'C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\csc.exe'
+    : 'C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319\\csc.exe';
+  const exeOut = is64 ? 'DNS-SpeedBench-v1.0-x64.exe' : 'DNS-SpeedBench-v1.0-x86.exe';
+  const platformFlag = is64 ? 'x64' : 'x86';
+
+  return `@echo off
+echo ======================================================================
+echo Compiling ${exeOut} (${is64 ? '64-bit' : '32-bit'} Zero-Install Standalone)
+echo Author: Rohith Varma
+echo ======================================================================
+echo.
+set "CSC=${cscPath}"
+if not exist "%CSC%" set "CSC=C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319\\csc.exe"
+
+"%CSC%" /platform:${platformFlag} /optimize+ /out:${exeOut} /target:exe DNSBenchmark.cs
+if %errorlevel% equ 0 (
+    echo.
+    echo Compilation Successful! Launching ${exeOut}...
+    echo.
+    ${exeOut}
+) else (
+    echo Compilation failed. Ensure DNSBenchmark.cs is in this folder.
+    pause
+)
 `;
 }
 
