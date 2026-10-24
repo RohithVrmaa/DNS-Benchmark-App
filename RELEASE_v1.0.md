@@ -13,9 +13,9 @@ A true native Windows desktop application window (`HWND`) with its own applicati
 
 | Portable Executable | Architecture | Target Systems | Size | SHA-256 Hash |
 | :--- | :--- | :--- | :--- | :--- |
-| **[`DNS-SpeedBench-v1.0-win-x64-portable.exe`](https://github.com/RohithVrmaa/DNS-Benchmark-App/releases/download/v1.0/DNS-SpeedBench-v1.0-win-x64-portable.exe)** | **64-bit (x64)** | Windows 11 & Windows 10 *(Native Desktop App)* | **~641 KB** | `7a1f91d82303770fc768811ad53e18a90d4151f34692f3ab4f04f5f4c0255842` |
-| **[`DNS-SpeedBench-v1.0-win-x86-portable.exe`](https://github.com/RohithVrmaa/DNS-Benchmark-App/releases/download/v1.0/DNS-SpeedBench-v1.0-win-x86-portable.exe)** | **32-bit (x86)** | Legacy 32-bit Windows, Tablets, IoT *(Native Desktop App)* | **~651 KB** | `2ac121cd43688c0e037e037c465067672c9db7734d5438a089c39f286c3b2199` |
-| **[`SHA256SUMS.txt`](https://github.com/RohithVrmaa/DNS-Benchmark-App/releases/download/v1.0/SHA256SUMS.txt)** | **Checksums** | Cryptographic Verification | < 1 KB | `584c8a0e0be33836f605cefdb80e25fc026b29bf94760db60087bf8c4b5a85e5` |
+| **[`DNS-SpeedBench-v1.0-win-x64-portable.exe`](https://github.com/RohithVrmaa/DNS-Benchmark-App/releases/download/v1.0/DNS-SpeedBench-v1.0-win-x64-portable.exe)** | **64-bit (x64)** | Windows 11 & Windows 10 *(Native Desktop App)* | **~1.5 MB** | `92e74c6048a997d45f4b7fab675432c0e814788d87ebd1ec90310b60ae9eac38` |
+| **[`DNS-SpeedBench-v1.0-win-x86-portable.exe`](https://github.com/RohithVrmaa/DNS-Benchmark-App/releases/download/v1.0/DNS-SpeedBench-v1.0-win-x86-portable.exe)** | **32-bit (x86)** | Legacy 32-bit Windows, Tablets, IoT *(Native Desktop App)* | **~1.7 MB** | `99337c6d751f77cff012c4d772276dab674f73c06e57ccc720f3453e8ef82841` |
+| **[`SHA256SUMS.txt`](https://github.com/RohithVrmaa/DNS-Benchmark-App/releases/download/v1.0/SHA256SUMS.txt)** | **Checksums** | Cryptographic Verification | < 1 KB | *(Included in download)* |
 
 ---
 
@@ -24,8 +24,11 @@ A true native Windows desktop application window (`HWND`) with its own applicati
 - **True Native Windows Application (Proper Desktop App)**:
   - Creates a dedicated native Win32 window (`HWND`) with its own custom window procedure and class.
   - Native Windows taskbar icon and window chrome — no browser address bar, no tabs, no Edge profile banners, no browser search boxes, and no default browser context menus.
-- **Ultra-Lightweight Native Binary (< 660 KB)**:
-  - Native C++ desktop binary (~641 KB x64, ~651 KB x86) embedding all application assets directly into the PE image.
+- **100% Standalone Static Runtime (Zero Missing DLL Errors)**:
+  - Statically links C/C++ runtimes (`-static -static-libgcc -static-libstdc++`) so the application requires zero external DLLs (no `libstdc++-6.dll` or `libgcc_s_seh-1.dll` errors).
+  - Out-of-the-box operation on any clean Windows machine without needing Visual C++ redistributables or MinGW environments.
+- **Ultra-Lightweight Native Binary (~1.5 MB)**:
+  - Native C++ desktop binary embedding all application assets directly into the PE image (replaces heavy 80+ MB runtimes).
   - Zero antivirus false positives: no NSIS SFX dropper heuristics (such as `Doplik!pz`).
 - **Dual Architecture Support**:
   - **64-bit (x64)** build optimized for modern multi-core AMD/Intel Windows 10/11 environments.
